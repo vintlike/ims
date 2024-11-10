@@ -14,9 +14,11 @@ export default tseslint.config(
       globals: globals.browser
     },
     plugins: {
+      // @ts-ignore
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh
     },
+    // @ts-ignore
     rules: {
       ...reactHooks.configs.recommended.rules,
       'react-refresh/only-export-components': [
@@ -38,7 +40,9 @@ export default tseslint.config(
       'no-unsafe-finally': 'off',
       '@typescript-eslint/no-non-null-assertion': 'off',
       'prefer-const': 'off',
-      'ts/no-unused-vars': 'off'
+      'ts/no-unused-vars': 'off',
+      '@typescript-eslint/no-empty-object-type': 'off',
+      'no-empty': 'off'
     }
   }
 );

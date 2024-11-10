@@ -5,7 +5,7 @@
 import path from 'path';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 
-export function svgPlugin() {
+export function svgIconsPlugin() {
   return createSvgIconsPlugin({
     // 指定需要缓存的图标文件夹
     iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],

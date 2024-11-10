@@ -4,7 +4,7 @@
  */
 import { VitePWA } from 'vite-plugin-pwa';
 
-export function configPwaPlugin() {
+export function pwaPlugin() {
   const options = {
     includeAssets: [
       'favicon.svg',
