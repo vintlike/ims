@@ -16,7 +16,7 @@ export const AppMenu: React.FC<Props> = (props) => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
-  const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
+  const [menuItems, setMenuItems] = useState<MenuItem[]>(menuData ?? []);
   const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
   const [openKeys, setOpenKeys] = useState<string[]>([]);
 
@@ -45,17 +45,16 @@ export const AppMenu: React.FC<Props> = (props) => {
   return (
     <MenuLayout
       {...rest}
-      selectedKeys={selectedKeys}
-      // defaultSelectedKeys={selectedKeys}
-      // defaultOpenKeys={openKeys}
-      openKeys={openKeys}
       mode={mode}
+      openKeys={openKeys}
+      selectedKeys={selectedKeys}
       items={menuItems as any}
       onClick={menuItemClick}
       // 注意这个属性 `onOpenChange`
       onOpenChange={(oKeys: any) => {
         setOpenKeys(oKeys);
       }}
+      style={{ border: 'none' }}
     />
   );
 };

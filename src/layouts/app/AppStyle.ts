@@ -20,14 +20,15 @@ export const LogoLayout = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 60px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
     }
 
     .logo-title {
       flex: 1;
       transition: all 0.5s;
       width: 100%;
+      min-width: 140px;
       overflow: hidden;
       color: #000;
       font-weight: 500;
@@ -66,8 +67,8 @@ export const ContainerLayout = styled(Layout)`
 
 export const HeaderLayout = styled(Layout.Header)`
   ${HeaderCss};
-  height: 50px;
-  line-height: 50px;
+  height: 60px;
+  line-height: 60px;
   padding: 0 20px;
 
   position: sticky;
@@ -104,11 +105,11 @@ export const FooterLayout = styled(Layout.Footer)`
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.06);
 `;
 
-export const MainLayout = styled(Layout.Content)`
+export const MainLayout = styled(Layout)`
   ${MainCss};
 `;
 
-export const ContentLayout = styled.div`
+export const ContentLayout = styled(Layout.Content)`
   ${ContentCss};
   overflow: auto;
 `;

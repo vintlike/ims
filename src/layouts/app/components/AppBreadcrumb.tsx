@@ -32,8 +32,6 @@ export const AppBreadcrumb: React.FC<Props> = (props) => {
     items: Partial<BreadcrumbItemType & BreadcrumbSeparatorType>[],
     paths: string[]
   ) {
-    // console.log(paths, paths.join('/'));
-
     const last = items.indexOf(item) === items.length - 1;
     return last ? (
       <span>{item.title}</span>

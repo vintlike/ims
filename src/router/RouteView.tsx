@@ -5,7 +5,7 @@ import { baseRouter } from '.';
 
 const RouteView = memo(() => {
   const routeElem = createBrowserRouter(baseRouter as RouteObject[]);
-  console.log(baseRouter);
+
   return <RouterProvider router={routeElem} />;
 });
 

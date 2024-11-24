@@ -59,18 +59,15 @@ export interface MenuItem
       // 是否隐藏标签
       hideTabs?: boolean;
 
-      children?: IMenuItem[];
+      children?: MenuItem[];
     }
   > {}
 
 /** 路由配置属性定义 */
-export type RouteItem = Omit<IMenuItem, 'children' | 'key'> &
+export type RouteItem = Omit<MenuItem, 'children'> &
   Omit<RouteObject, 'children'> & {
-    key?: React.Key;
-    /** 是否默认显示页面，设置了index时不可以path，两者不能同时存在 */
+    /** 是否默认显示页面，设置了index时不可以配置path，两者不能同时存在 */
     index?: boolean;
-    /** 用于菜单显示名称 */
-    label?: string;
     /** 路径,可以设定为网页链接 */
     path?: string;
     /** react-router-dom v6路由组件 */
@@ -116,5 +113,11 @@ export type RouteItem = Omit<IMenuItem, 'children' | 'key'> &
 
     alwaysShow?: boolean;
     handle?: MenuItem;
-    // meta: MenuItem;
+    meta?: MenuItem;
   };
+
+export interface AsyncRouteType {
+  path: string;
+  id: string;
+  children: AsyncRouteType[];
+}

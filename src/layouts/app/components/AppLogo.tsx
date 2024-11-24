@@ -11,12 +11,7 @@ export const AppLogo = memo(() => {
   return (
     <LogoLayout className="logo">
       <div className="logo-pic">
-        <Image
-          width={38}
-          src={logo}
-          preview={false}
-          onClick={() => navigate('/')}
-        />
+        <Image src={logo} preview={false} onClick={() => navigate('/')} />
       </div>
       <div
         className="logo-title"

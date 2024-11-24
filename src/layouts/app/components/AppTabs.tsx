@@ -57,7 +57,6 @@ export const AppTabs: React.FC<Props> = (props) => {
   const onTabChange = (key: string) => {
     setActiveKey(key);
     navigate(`${key}`);
-    console.log(key);
   };
 
   useEffect(() => {

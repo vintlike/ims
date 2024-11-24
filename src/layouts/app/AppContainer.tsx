@@ -2,15 +2,11 @@ import { AppHeader } from './AppHeader';
 import { AppMain } from './AppMain';
 import { ContainerLayout } from './AppStyle';
 
-interface Props {
-  style?: React.CSSProperties;
-}
+interface Props {}
 
 export const AppContainer: React.FC<Props> = (props) => {
-  const { style } = props;
-
   return (
-    <ContainerLayout className="app-container" style={style}>
+    <ContainerLayout className="app-container">
       <AppHeader />
       <AppMain />
     </ContainerLayout>

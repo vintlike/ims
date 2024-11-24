@@ -6,23 +6,26 @@ import {
   HeaderHeadLayout,
   HeaderLayout
 } from './AppStyle';
+import { useMenuList } from '@/hooks/useMenuList';
+import { useMemo } from 'react';
 
-interface Props {
-  style?: React.CSSProperties;
-}
+interface Props {}
 
 export const AppHeader: React.FC<Props> = (props) => {
-  const { style } = props;
+  const { menuList } = useMenuList();
+  const menuItems = useMemo(() => {
+    return menuList;
+  }, [menuList]);
 
   return (
-    <HeaderLayout style={{ ...style }}>
-      <HeaderHeadLayout>
+    <HeaderLayout className="app-header">
+      <HeaderHeadLayout className="app-header-head">
         <AppLogo />
       </HeaderHeadLayout>
-      <HeaderBodyLayout>
-        <AppMenu />
+      <HeaderBodyLayout className="app-header-body">
+        <AppMenu menuData={menuItems} />
       </HeaderBodyLayout>
-      <HeaderFootLayout></HeaderFootLayout>
+      <HeaderFootLayout className="app-header-foot"></HeaderFootLayout>
     </HeaderLayout>
   );
 };

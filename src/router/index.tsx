@@ -36,7 +36,7 @@ export const defaultRouter: RouteItem[] = [
     id: 'About',
     redirect: '/about/aboutUs',
     meta: {
-      label: '关于我们'
+      label: '关于'
     },
     children: [
       {
