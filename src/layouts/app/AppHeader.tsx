@@ -1,31 +1,51 @@
-import { AppLogo } from './components/AppLogo';
-import { AppMenu } from './components/AppMenu';
+import { useAppSelector } from '@/store/hooks';
+import { useResponsive } from 'ahooks';
+import { Space, theme } from 'antd';
+import { shallowEqual } from 'react-redux';
 import {
   HeaderBodyLayout,
   HeaderFootLayout,
   HeaderHeadLayout,
   HeaderLayout
 } from './AppStyle';
-import { useMenuList } from '@/hooks/useMenuList';
-import { useMemo } from 'react';
+import { AppCollapsedSwitch } from './components/AppCollapsedSwitch';
+import { AppLogo } from './components/AppLogo';
+import { AppMenu } from './components/AppMenu';
 
 interface Props {}
 
 export const AppHeader: React.FC<Props> = (props) => {
-  const { menuList } = useMenuList();
-  const menuItems = useMemo(() => {
-    return menuList;
-  }, [menuList]);
+  const { sidebarMode } = useAppSelector(
+    (state) => ({
+      sidebarMode: state.app.sidebarMode
+    }),
+    shallowEqual
+  );
+  const globalTheme = theme.useToken();
+  const responsive = useResponsive();
 
   return (
-    <HeaderLayout className="app-header">
-      <HeaderHeadLayout className="app-header-head">
-        <AppLogo />
-      </HeaderHeadLayout>
+    <HeaderLayout
+      className="app-header"
+      style={{
+        backgroundColor: globalTheme.token.colorBgContainer,
+        borderBottom: `1px solid ${globalTheme.token.colorBorder}`
+      }}
+    >
+      {(sidebarMode !== 'blend' || !responsive.sm) && (
+        <HeaderHeadLayout className="app-header-head">
+          {(sidebarMode === 'vertical' || !responsive.sm) && (
+            <AppCollapsedSwitch />
+          )}
+          {sidebarMode === 'horizontal' && responsive.sm && <AppLogo />}
+        </HeaderHeadLayout>
+      )}
       <HeaderBodyLayout className="app-header-body">
-        <AppMenu menuData={menuItems} />
+        {sidebarMode !== 'vertical' && responsive.sm ? <AppMenu /> : null}
       </HeaderBodyLayout>
-      <HeaderFootLayout className="app-header-foot"></HeaderFootLayout>
+      <HeaderFootLayout className="app-header-foot">
+        <Space size={10}></Space>
+      </HeaderFootLayout>
     </HeaderLayout>
   );
 };

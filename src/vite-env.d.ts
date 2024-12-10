@@ -14,3 +14,13 @@ type Watcher<T> = {
 };
 
 declare function watch<T>(obj: T): Watcher<T>;
+
+interface GObject {
+  [key: string | number]: any;
+}
+
+interface Res<T = any> {
+  data: T;
+  status: number;
+  msg?: string;
+}
