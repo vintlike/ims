@@ -20,10 +20,7 @@ export async function initAsyncRoute(power: string) {
   return '';
 }
 
-export function handlePowerRoute(
-  dataRouter: AsyncRouteType[],
-  routerList: RouteItem[] = defaultRouter
-) {
+export function handlePowerRoute(dataRouter: AsyncRouteType[], routerList: RouteItem[] = defaultRouter) {
   const newRouteList: RouteItem[] = [];
   routerList.forEach((item) => {
     const rtItem = cloneDeep(item);
@@ -50,10 +47,7 @@ export function handlePowerRoute(
 }
 
 // 通过path获取父级路径
-export function getParentPaths(
-  routePath: string,
-  routes: MenuItem[]
-): string[] {
+export function getParentPaths(routePath: string, routes: MenuItem[]): string[] {
   // 深度遍历查找
   function dfs(routes: MenuItem[], key: string, parents: string[]) {
     for (let i = 0; i < routes.length; i++) {
@@ -82,10 +76,7 @@ export function getParentPaths(
 }
 
 // 查找对应path的路由信息
-export function findRouteByPath(
-  path: Key,
-  routes: MenuItem[]
-): MenuItem | null {
+export function findRouteByPath(path: Key, routes: MenuItem[]): MenuItem | null {
   const res = routes.find((item) => item.key === path) || null;
   if (res) {
     return res;
@@ -147,13 +138,13 @@ export function setUpRoutePath(routeList: AsyncRouteType[], pathName = '') {
 
 // 扁平路由
 export function formatFlatteningRoutes(routesList: AsyncRouteType[]) {
-  if (routesList.length === 0) return routesList;
+  if (routesList.length === 0) {
+    return routesList;
+  }
   let hierarchyList = routesList;
   for (let i = 0; i < hierarchyList.length; i++) {
     if (hierarchyList[i].children) {
-      hierarchyList = hierarchyList
-        .slice(0, i + 1)
-        .concat(hierarchyList[i].children || [], hierarchyList.slice(i + 1));
+      hierarchyList = hierarchyList.slice(0, i + 1).concat(hierarchyList[i].children || [], hierarchyList.slice(i + 1));
     }
   }
   return hierarchyList;
