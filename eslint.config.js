@@ -18,13 +18,14 @@ export default tseslint.config(
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh
     },
-    // @ts-ignore
     rules: {
       ...reactHooks.configs.recommended.rules,
       'react-refresh/only-export-components': [
-        'off',
+        'warn',
         { allowConstantExport: true }
       ],
+      'react-hooks/rules-of-hooks': 'error', // 修改为具体的规则配置
+      'react-hooks/exhaustive-deps': 'warn', // 修改为具体的规则配置
       '@typescript-eslint/consistent-type-imports': ['warn'],
       // 关闭定义变量未使用提示/报错
       '@typescript-eslint/no-unused-vars': 'off',

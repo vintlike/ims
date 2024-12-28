@@ -4,7 +4,7 @@ import { createVitePlugins } from './build/vite/plugins';
 import { createViteBuild } from './build/vite/build';
 import { createViteServer } from './build/vite/server';
 
-// https://vitejs.dev/config/
+// https://vite.dev/config/
 export default (configEnv: ConfigEnv): UserConfig => {
   const { command } = configEnv;
 
